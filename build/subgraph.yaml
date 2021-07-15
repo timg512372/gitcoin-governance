@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: GovernorAlpha
@@ -20,7 +20,7 @@ dataSources:
         - VoteCast
       abis:
         - name: GovernorAlpha
-          file: ./abis/GovernorAlpha.json
+          file: GovernorAlpha/abis/GovernorAlpha.json
       eventHandlers:
         - event: ProposalCanceled(uint256)
           handler: handleProposalCanceled
@@ -32,7 +32,7 @@ dataSources:
           handler: handleProposalQueued
         - event: VoteCast(address,uint256,bool,uint256)
           handler: handleVoteCast
-      file: ./src/mapping.ts
+      file: GovernorAlpha/GovernorAlpha.wasm
   - kind: ethereum/contract
     name: Gitcoin
     network: mainnet
@@ -52,7 +52,7 @@ dataSources:
         - Transfer
       abis:
         - name: Gitcoin
-          file: ./abis/Gitcoin.json
+          file: Gitcoin/abis/Gitcoin.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
@@ -66,4 +66,4 @@ dataSources:
           handler: handleMinterChanged
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/mapping.ts
+      file: GovernorAlpha/GovernorAlpha.wasm
